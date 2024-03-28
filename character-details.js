@@ -1,15 +1,17 @@
-// Dohvaćanje ID lika iz URL-a
-const urlParams = new URLSearchParams(window.location.search);
-const characterId = urlParams.get('id');
 
-// Dohvaćanje detalja o liku pomoću ID-a
+const urlParams = new URLSearchParams(window.location.search);
+const characterId = urlParams.get("id");
+
+
 fetch(`https://rickandmortyapi.com/api/character/${characterId}`)
-    .then(response => response.json())
-    .then(character => {
-        const characterDetailsContainer = document.querySelector("#character-details-container");
-        
-        // Kreiranje HTML-a za prikaz detalja o karakteru
-        const characterDetailsHTML = `
+  .then((response) => response.json())
+  .then((character) => {
+    const characterDetailsContainer = document.querySelector(
+      "#character-details-container"
+    );
+
+    
+    const characterDetailsHTML = `
             <div class="character-top-content">
                 <img src="${character.image}" alt="${character.name}">
                 <h2>${character.name}</h2><br>
@@ -25,16 +27,21 @@ fetch(`https://rickandmortyapi.com/api/character/${characterId}`)
                     </div>
                    <div class="character-episodes">
                    <h1>Episodes</h1>
-                   ${character.episode.map(episodeUrl => `<a href="${episodeUrl}">${episodeUrl}</a>`).join('<br>')}
+                   ${character.episode
+                     .map(
+                       (episodeUrl) =>
+                         `<a href="${episodeUrl}">${episodeUrl}</a>`
+                     )
+                     .join("<br>")}
                    </div>
                     
                 
             </div>
         `;
-        
-        // Prikazivanje detalja o karakteru u HTML-u
-        characterDetailsContainer.innerHTML = characterDetailsHTML;
-    })
-    .catch(error => {
-        console.error('Error fetching character details:', error);
-    });
+
+    
+    characterDetailsContainer.innerHTML = characterDetailsHTML;
+  })
+  .catch((error) => {
+    console.error("Error fetching character details:", error);
+  });
