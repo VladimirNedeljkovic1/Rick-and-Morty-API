@@ -37,15 +37,15 @@ h1 {
 
 
 
-.scrollbar::-webkit-scrollbar {
+body::-webkit-scrollbar {
     width: 1em;
 }
 
-.scrollbar::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
     background: lightgrey;
 }
 
-.scrollbar::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
     background-color: #3e1e93;
 }
 
